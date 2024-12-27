@@ -1,0 +1,41 @@
+BUILDHOST:
+- xubuntu-24.04.1-minimal-amd64.iso
+- 8GB RAM (12 för att köra emulator mindre smärtsamt)
+- 40GB storage (för att kunna köra även emulator)
+- 4 cpus (12 för att köra emulator mindre smärtsamt)
+
+Fast Intel är inte rekommenderat för att köra emulatorn. ARM är nog bättre.
+
+Install xubuntu:
+- english
+- swedish keyboard
+- select support for 3rd party and additional media formats
+
+Efter install:
+- Kan behöva boota om med Force shutdown eller logga in en extra gång
+- Ändra upplösning till 1920x1080
+- sudo apt update
+- sudo apt dist-upgrade
+- sudo apt install git gh firefox emacs htop # no config for postfix is fine
+- reboot
+
+Installera Android Studio enligt:
+<https://developer.android.com/codelabs/basic-android-kotlin-compose-install-android-studio#6>
+- Jag fick Android Studio Ladybug, 2024.2.1 Patch 3, android-studio-2024.2.1.12-linux.tar.gz
+- Jag följde *inte* instruktionen för KVM (kör virtuellt)
+- Click More Actions and SDK manager
+- Välj till API level 26 och 35.
+- Avsluta Android Studio
+
+cd; git clone https://github.com/jonasgit/androkom2.git
+
+starta Android Studio som: ~/Downloads/android-studio/bin/studio
+- Open Project
+- välj androkom2-katalogen
+- Vänta på att allt initieras
+- Menu (hamburger) -> Build -> Make Project
+- Menu (hamburger) -> Build -> Make Module androkom
+- Menu (hamburger) -> Build -> Build APK
+- Click locate to find apk at ~/androkom2/app/build/outputs/apk/debug/app-debug.apk
+tip: find SDK-manager at Menu -> Tools -> SDK Manager
+tip: find emulated devices at Menu -> Tools -> Device Manager
