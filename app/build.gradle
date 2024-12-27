@@ -8,8 +8,8 @@ android {
 
     defaultConfig {
         applicationId "org.lindev.androkom"
-        minSdk 28
-        targetSdk 28
+        minSdk 29
+        targetSdk 29
         versionCode 51
         versionName "1.01"
 
