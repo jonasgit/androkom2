@@ -130,9 +130,9 @@ public class TextCreator extends TabActivity implements ServiceConnection {
 
         /* Use the LocationManager class to obtain GPS locations */
 
-        mlocManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-        mlocListener = new MyLocationListener();
-        mlocManager.requestLocationUpdates( LocationManager.GPS_PROVIDER, 0, 0, mlocListener);
+        //mlocManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+        //mlocListener = new MyLocationListener();
+        //mlocManager.requestLocationUpdates( LocationManager.GPS_PROVIDER, 0, 0, mlocListener);
         
         initializeCommon();
         initializeRecipients();
