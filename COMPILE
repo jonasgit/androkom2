@@ -1,10 +1,10 @@
 BUILDHOST:
 - xubuntu-24.04.1-minimal-amd64.iso
-- 8GB RAM (12 för att köra emulator mindre smärtsamt)
+- 8GB RAM
 - 40GB storage (för att kunna köra även emulator)
-- 4 cpus (12 för att köra emulator mindre smärtsamt)
+- 4 cpus
 
-Fast Intel är inte rekommenderat för att köra emulatorn. ARM är nog bättre.
+På Intel krävs KVM för att emulatorn ska fungera vettigt.
 
 Install xubuntu:
 - english
