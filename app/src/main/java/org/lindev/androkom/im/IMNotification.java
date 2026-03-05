@@ -63,7 +63,7 @@ public class IMNotification implements Observer {
             notificationIntent.putExtra(IMConversation.INTENT_CONVERSATION_STR, convStr);
         }
 
-        final PendingIntent contentIntent = PendingIntent.getActivity(mKom, 0, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+        final PendingIntent contentIntent = PendingIntent.getActivity(mKom, 0, notificationIntent, PendingIntent.FLAG_IMMUTABLE);
         final Notification notification = new Notification(R.drawable.icon, tickerText, System.currentTimeMillis());
         notification.defaults |= Notification.DEFAULT_SOUND;
         notification.flags |= Notification.FLAG_AUTO_CANCEL;

@@ -4,14 +4,14 @@ plugins {
 
 android {
     namespace 'org.lindev.androkom'
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
         applicationId "org.lindev.androkom"
-        minSdk 33
-        targetSdk 34
-        versionCode 53
-        versionName "1.1.1"
+        minSdk 28
+        targetSdk 35
+        versionCode 54
+        versionName "1.1.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

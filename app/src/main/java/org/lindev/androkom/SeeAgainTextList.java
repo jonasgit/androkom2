@@ -28,6 +28,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.core.view.WindowCompat;
+
 /**
  * Show a list of texts again.
  * 
@@ -46,6 +48,10 @@ public class SeeAgainTextList extends ListActivity implements ServiceConnection 
 		Log.d(TAG, "onCreate");
 		// Use a custom layout file
 		setContentView(R.layout.main);
+
+        // Explicitly opt out of edge-to-edge so content is laid out
+        // below the system bars and title/menu bar.
+        WindowCompat.setDecorFitsSystemWindows(getWindow(), true);
 
         if (savedInstanceState != null) {
             Log.d(TAG, "Got a bundle");

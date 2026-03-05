@@ -29,6 +29,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.core.view.WindowCompat;
+
 /**
  * Show a list of unread texts in selected conference.
  * 
@@ -47,6 +49,10 @@ public class ConferenceTextList extends ListActivity implements AsyncMessageSubs
         Log.d(TAG, "onCreate");
 		// Use a custom layout file
 		setContentView(R.layout.main);
+
+        // Explicitly opt out of edge-to-edge so content is laid out
+        // below the system bars and title/menu bar.
+        WindowCompat.setDecorFitsSystemWindows(getWindow(), true);
 
 	    mConfNo = (Integer) getIntent().getExtras().get("conference-id");
 
