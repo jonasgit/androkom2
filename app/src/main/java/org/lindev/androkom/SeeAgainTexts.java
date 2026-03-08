@@ -18,6 +18,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
+
 /**
  * Dialog to set options for See Again (återse). 
  * 
@@ -37,6 +42,25 @@ public class SeeAgainTexts extends Activity implements ServiceConnection {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.seeagain);
 
+        final View root = findViewById(R.id.seeagain_root);
+
+        final int paddingLeft = root.getPaddingLeft();
+        final int paddingTop = root.getPaddingTop();
+        final int paddingRight = root.getPaddingRight();
+        final int paddingBottom = root.getPaddingBottom();
+
+        WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
+
+        ViewCompat.setOnApplyWindowInsetsListener(root, (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(
+                    paddingLeft + systemBars.left,
+                    paddingTop + systemBars.top,
+                    paddingRight + systemBars.right,
+                    paddingBottom + systemBars.bottom
+            );
+            return insets;
+        });
         mConfName = (EditText) findViewById(R.id.confname);
         mTexts = (EditText) findViewById(R.id.num_texts);
         mradioUserButton = (RadioButton) findViewById(R.id.radio_user);
