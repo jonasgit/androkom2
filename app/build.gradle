@@ -4,12 +4,12 @@ plugins {
 
 android {
     namespace 'org.lindev.androkom'
-    compileSdk 35
+    compileSdk 36
 
     defaultConfig {
         applicationId "org.lindev.androkom"
         minSdk 28
-        targetSdk 35
+        targetSdk 36
         versionCode 55
         versionName "1.1.3"
 

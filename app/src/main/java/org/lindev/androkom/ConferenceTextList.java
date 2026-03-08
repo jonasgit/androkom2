@@ -29,7 +29,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 /**
  * Show a list of unread texts in selected conference.
@@ -50,9 +53,25 @@ public class ConferenceTextList extends ListActivity implements AsyncMessageSubs
 		// Use a custom layout file
 		setContentView(R.layout.main);
 
-        // Explicitly opt out of edge-to-edge so content is laid out
-        // below the system bars and title/menu bar.
-        WindowCompat.setDecorFitsSystemWindows(getWindow(), true);
+        final View root = findViewById(R.id.main_root);
+
+        final int paddingLeft = root.getPaddingLeft();
+        final int paddingTop = root.getPaddingTop();
+        final int paddingRight = root.getPaddingRight();
+        final int paddingBottom = root.getPaddingBottom();
+
+        WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
+
+        ViewCompat.setOnApplyWindowInsetsListener(root, (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(
+                    paddingLeft + systemBars.left,
+                    paddingTop + systemBars.top,
+                    paddingRight + systemBars.right,
+                    paddingBottom + systemBars.bottom
+            );
+            return insets;
+        });
 
 	    mConfNo = (Integer) getIntent().getExtras().get("conference-id");
 
