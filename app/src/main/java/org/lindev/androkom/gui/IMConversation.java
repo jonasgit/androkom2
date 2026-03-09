@@ -41,6 +41,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
+
 public class IMConversation extends ListActivity implements ServiceConnection, Observer, OnClickListener {
     public static final String TAG = "Androkom IMConversation";
 
@@ -127,6 +132,26 @@ public class IMConversation extends ListActivity implements ServiceConnection, O
         }
 
         setContentView(R.layout.im_conversation_layout);
+
+        final View root = findViewById(android.R.id.content);
+
+        final int paddingLeft = root.getPaddingLeft();
+        final int paddingTop = root.getPaddingTop();
+        final int paddingRight = root.getPaddingRight();
+        final int paddingBottom = root.getPaddingBottom();
+
+        WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
+
+        ViewCompat.setOnApplyWindowInsetsListener(root, (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(
+                    paddingLeft + systemBars.left,
+                    paddingTop + systemBars.top,
+                    paddingRight + systemBars.right,
+                    paddingBottom + systemBars.bottom
+            );
+            return insets;
+        });
         mSendButton = (Button) findViewById(R.id.send);
         mTextField = (EditText) findViewById(R.id.message);
 

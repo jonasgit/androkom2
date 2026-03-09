@@ -13,7 +13,13 @@ import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Message;
+import android.view.View;
 import android.widget.ArrayAdapter;
+
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 public class MessageLog extends ListActivity implements AsyncMessageSubscriber, ServiceConnection
 {
@@ -28,6 +34,27 @@ public class MessageLog extends ListActivity implements AsyncMessageSubscriber, 
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.message_main);
+
+        final View root = findViewById(R.id.message_log_root);
+
+        final int paddingLeft = root.getPaddingLeft();
+        final int paddingTop = root.getPaddingTop();
+        final int paddingRight = root.getPaddingRight();
+        final int paddingBottom = root.getPaddingBottom();
+
+        WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
+
+        ViewCompat.setOnApplyWindowInsetsListener(root, (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(
+                    paddingLeft + systemBars.left,
+                    paddingTop + systemBars.top,
+                    paddingRight + systemBars.right,
+                    paddingBottom + systemBars.bottom
+            );
+            return insets;
+        });
+
         mAdapter = new ArrayAdapter<String>(this, R.layout.message_log);
         setListAdapter(mAdapter);
         mLogIndex = 0;

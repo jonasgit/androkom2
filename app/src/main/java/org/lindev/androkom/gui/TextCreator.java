@@ -55,6 +55,11 @@ import android.widget.TabHost;
 import android.widget.Toast;
 import android.widget.TabHost.TabSpec;
 
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
+
 public class TextCreator extends TabActivity implements ServiceConnection {
     public static final String TAG = "Androkom TextCreator";
 
@@ -128,6 +133,26 @@ public class TextCreator extends TabActivity implements ServiceConnection {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_new_text_layout);
 
+        final View root = findViewById(R.id.create_new_text_root);
+
+        final int paddingLeft = root.getPaddingLeft();
+        final int paddingTop = root.getPaddingTop();
+        final int paddingRight = root.getPaddingRight();
+        final int paddingBottom = root.getPaddingBottom();
+
+        WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
+
+        ViewCompat.setOnApplyWindowInsetsListener(root, (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(
+                    paddingLeft + systemBars.left,
+                    paddingTop + systemBars.top,
+                    paddingRight + systemBars.right,
+                    paddingBottom + systemBars.bottom
+            );
+            return insets;
+        });
+	
         /* Use the LocationManager class to obtain GPS locations */
 
         //mlocManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);

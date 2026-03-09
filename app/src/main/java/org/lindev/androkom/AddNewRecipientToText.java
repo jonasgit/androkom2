@@ -21,6 +21,11 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
 
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
+
 /**
  * Add new recipient dialog. 
  * 
@@ -88,6 +93,26 @@ public class AddNewRecipientToText extends Activity implements ServiceConnection
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.addnewrecipienttotext);
+
+        final View root = findViewById(android.R.id.content);
+
+        final int paddingLeft = root.getPaddingLeft();
+        final int paddingTop = root.getPaddingTop();
+        final int paddingRight = root.getPaddingRight();
+        final int paddingBottom = root.getPaddingBottom();
+
+        WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
+
+        ViewCompat.setOnApplyWindowInsetsListener(root, (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(
+                    paddingLeft + systemBars.left,
+                    paddingTop + systemBars.top,
+                    paddingRight + systemBars.right,
+                    paddingBottom + systemBars.bottom
+            );
+            return insets;
+        });
 
         mTextNo = (Integer) getIntent().getExtras().get(INTENT_TEXTNO);
 
