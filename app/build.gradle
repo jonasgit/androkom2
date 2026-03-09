@@ -10,8 +10,8 @@ android {
         applicationId "org.lindev.androkom"
         minSdk 28
         targetSdk 36
-        versionCode 59
-        versionName "1.1.7"
+        versionCode 60
+        versionName "1.1.8"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
