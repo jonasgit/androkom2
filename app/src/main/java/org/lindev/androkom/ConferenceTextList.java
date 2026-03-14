@@ -48,12 +48,11 @@ public class ConferenceTextList extends ListActivity implements AsyncMessageSubs
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         Log.d(TAG, "onCreate");
 		// Use a custom layout file
 		setContentView(R.layout.main);
 
-        final View root = findViewById(R.id.content);
+        final View root = findViewById(android.R.id.content);
 
         final int paddingLeft = root.getPaddingLeft();
         final int paddingTop = root.getPaddingTop();
@@ -250,7 +249,7 @@ public class ConferenceTextList extends ListActivity implements AsyncMessageSubs
 			AsyncTask<Void, Void, List<TextInfo>> {
 		@Override
 		protected void onPreExecute() {
-			setProgressBarIndeterminateVisibility(true);
+			setProgress(100); // Show system progress indicator
 		}
 
 		// worker thread (separate from UI thread)
@@ -280,7 +279,7 @@ public class ConferenceTextList extends ListActivity implements AsyncMessageSubs
 
 		@Override
         protected void onPostExecute(final List<TextInfo> fetched) {
-            setProgressBarIndeterminateVisibility(false);
+            setProgress(0); // Hide system progress indicator
 
             mAdapter.clear();
             mTexts = fetched;
@@ -439,7 +438,7 @@ public class ConferenceTextList extends ListActivity implements AsyncMessageSubs
     private class reconnectTask extends AsyncTask<Void, Void, Integer> {
         protected void onPreExecute() {
             Log.d(TAG, "starting reconnectTask");
-            setProgressBarIndeterminateVisibility(true);
+            setProgress(100); // Show system progress indicator
         }
 
         // worker thread (separate from UI thread)
@@ -451,6 +450,7 @@ public class ConferenceTextList extends ListActivity implements AsyncMessageSubs
 
         protected void onPostExecute(Integer foo) {
             Log.d(TAG, "reconnect done");
+            setProgress(0); // Hide system progress indicator
         }
 
     }
