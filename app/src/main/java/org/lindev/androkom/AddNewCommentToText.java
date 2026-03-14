@@ -1,7 +1,6 @@
 package org.lindev.androkom;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.ComponentName;
 import android.content.ServiceConnection;
 import android.os.AsyncTask;
@@ -10,6 +9,7 @@ import android.os.IBinder;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.core.graphics.Insets;
@@ -30,17 +30,15 @@ public class AddNewCommentToText extends Activity implements ServiceConnection {
 
     private KomServer mKom;
     private EditText mCommentNo;
+    private ProgressBar mProgressBar;
 
     private class AddNewCommentToTextTask extends AsyncTask<Integer, Void, String> {
-        private ProgressDialog mDialog;
-
         @Override
         protected void onPreExecute() {
-            mDialog = new ProgressDialog(AddNewCommentToText.this);
-            mDialog.setCancelable(false);
-            mDialog.setIndeterminate(true);
-            mDialog.setMessage(getString(R.string.addnewcommenttotext_title));
-            mDialog.show();
+            // Show progress bar instead of deprecated ProgressDialog
+            runOnUiThread(() -> {
+                mProgressBar.setVisibility(View.VISIBLE);
+            });
         }
 
         @Override
@@ -57,13 +55,17 @@ public class AddNewCommentToText extends Activity implements ServiceConnection {
 
         @Override
         protected void onPostExecute(final String arg) {
-            mDialog.dismiss();
-            if (arg != "") {
-                Toast.makeText(getApplicationContext(),
-                        arg, Toast.LENGTH_SHORT)
-                        .show();                                
-            }
-            AddNewCommentToText.this.finish();
+            // Hide progress bar and show result
+            runOnUiThread(() -> {
+                mProgressBar.setVisibility(View.GONE);
+                
+                if (arg != "") {
+                    Toast.makeText(getApplicationContext(),
+                            arg, Toast.LENGTH_SHORT)
+                            .show();                                
+                }
+                AddNewCommentToText.this.finish();
+            });
         }
     }
 
@@ -103,6 +105,9 @@ public class AddNewCommentToText extends Activity implements ServiceConnection {
             }
         });
         getApp().doBindService(this);
+
+        // Initialize progress bar reference
+        mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
     }
 
     @Override

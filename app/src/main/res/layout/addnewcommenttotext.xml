@@ -1,32 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-android:id="@+id/addnewcommenttotext_root"
-android:layout_width="fill_parent"
-android:layout_height="fill_parent"
-xmlns:android="http://schemas.android.com/apk/res/android"
-android:orientation="vertical"
+    android:id="@+id/addnewcommenttotext_root"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
 >
-<TextView
-android:id="@+id/widget31"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:text="@string/do_addnewcommenttotext"
->
-</TextView>
-<EditText
-android:id="@+id/commentno"
-android:layout_width="fill_parent"
-android:layout_height="wrap_content"
-android:text=""
-android:hint="@string/default_number_hint"
-android:inputType="number"
-android:textSize="18sp"
->
-</EditText>
-<Button
-android:id="@+id/do_addnewcommenttotext"
-android:layout_width="fill_parent"
-android:layout_height="wrap_content"
-android:text="@string/do_addnewcommenttotext"
-/>
+    <TextView
+        android:id="@+id/widget31"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/do_addnewcommenttotext"
+    />
+    <EditText
+        android:id="@+id/commentno"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:hint="@string/default_number_hint"
+        android:inputType="number"
+        android:textSize="18sp"
+    />
+    <Button
+        android:id="@+id/do_addnewcommenttotext"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/do_addnewcommenttotext"
+    />
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:max="100"
+    />
 </LinearLayout>
