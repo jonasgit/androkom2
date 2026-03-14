@@ -74,7 +74,7 @@ public class AddNewCommentToText extends Activity implements ServiceConnection {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.addnewcommenttotext);
 
-        final View root = findViewById(R.id.addnewcommenttotext_root);
+        final View root = findViewById(android.R.id.content);
 
         final int paddingLeft = root.getPaddingLeft();
         final int paddingTop = root.getPaddingTop();

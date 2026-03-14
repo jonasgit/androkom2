@@ -66,7 +66,7 @@ public class Endast extends Activity implements ServiceConnection {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.endast);
 
-        final View root = findViewById(R.id.endast_root);
+        final View root = findViewById(android.R.id.content);
 
         final int paddingLeft = root.getPaddingLeft();
         final int paddingTop = root.getPaddingTop();

@@ -86,7 +86,7 @@ public class Login extends Activity implements ServiceConnection
        
         setContentView(R.layout.login);
 
-        final View root = findViewById(R.id.scrollView1);
+        final View root = findViewById(android.R.id.content);
 
         final int paddingLeft = root.getPaddingLeft();
         final int paddingTop = root.getPaddingTop();

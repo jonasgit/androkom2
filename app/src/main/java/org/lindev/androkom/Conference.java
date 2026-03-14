@@ -138,7 +138,7 @@ public class Conference extends Activity implements AsyncMessageSubscriber, OnTo
         
         setContentView(R.layout.conference);
 
-        final View root = findViewById(R.id.conference_root);
+        final View root = findViewById(android.R.id.content);
 
         final int paddingLeft = root.getPaddingLeft();
         final int paddingTop = root.getPaddingTop();

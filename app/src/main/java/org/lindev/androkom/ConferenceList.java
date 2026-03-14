@@ -83,7 +83,7 @@ public class ConferenceList extends ListActivity implements AsyncMessageSubscrib
 		// Use a custom layout file
 		setContentView(R.layout.main);
 
-        final View root = findViewById(R.id.main_root);
+        final View root = findViewById(android.R.id.content);
 
         final int paddingLeft = root.getPaddingLeft();
         final int paddingTop = root.getPaddingTop();

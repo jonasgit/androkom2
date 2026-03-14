@@ -42,7 +42,7 @@ public class SeeAgainTexts extends Activity implements ServiceConnection {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.seeagain);
 
-        final View root = findViewById(R.id.seeagain_root);
+        final View root = findViewById(android.R.id.content);
 
         final int paddingLeft = root.getPaddingLeft();
         final int paddingTop = root.getPaddingTop();

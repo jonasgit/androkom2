@@ -35,7 +35,7 @@ public class MessageLog extends ListActivity implements AsyncMessageSubscriber, 
 
         setContentView(R.layout.message_main);
 
-        final View root = findViewById(R.id.message_log_root);
+        final View root = findViewById(android.R.id.content);
 
         final int paddingLeft = root.getPaddingLeft();
         final int paddingTop = root.getPaddingTop();

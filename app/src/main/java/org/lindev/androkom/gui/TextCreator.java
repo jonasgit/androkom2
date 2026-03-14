@@ -133,7 +133,7 @@ public class TextCreator extends TabActivity implements ServiceConnection {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_new_text_layout);
 
-        final View root = findViewById(R.id.create_new_text_root);
+        final View root = findViewById(android.R.id.content);
 
         final int paddingLeft = root.getPaddingLeft();
         final int paddingTop = root.getPaddingTop();

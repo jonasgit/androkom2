@@ -52,7 +52,7 @@ public class WhoIsOn extends ListActivity implements ServiceConnection
 
 		setContentView(R.layout.whoison);
 
-        final View root = findViewById(R.id.whoison_root);
+        final View root = findViewById(android.R.id.content);
 
         final int paddingLeft = root.getPaddingLeft();
         final int paddingTop = root.getPaddingTop();
